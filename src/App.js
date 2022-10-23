@@ -1,7 +1,6 @@
 import { useState } from "react";
 import ExpenseList from "./components/ExpenseList/ExpenseList";
 import NewExpense from "./components/NewExpense/NewExpense";
-import ExpensesFilter from "./components/ExpenseFilter/ExpenseFilter";
 
 function App() {
 
@@ -35,15 +34,10 @@ function App() {
     });
   }
 
-  const onFilterYearChangeHandler = (filterYear) => {
-    console.log(filterYear);
-  }
-
   return (
     <div className="App">
       <h2>Lets Get Started</h2>
-      <NewExpense newExpenseHandler={onAddNewExpenseHandler}></NewExpense>
-      <ExpensesFilter filterYearChangeHandler={onFilterYearChangeHandler}></ExpensesFilter>      
+      <NewExpense newExpenseHandler={onAddNewExpenseHandler}></NewExpense>     
       <ExpenseList expenses={expenses}></ExpenseList>
     </div>
   );
