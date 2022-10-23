@@ -1,7 +1,7 @@
 import React,{useState} from "react";
 import "./NewExpense.css"
 
-const NewExpense = () => {
+const NewExpense = (props) => {
 
     const [enteredTitle,setTitle] = useState('');
     const [enteredAmount,setAmount] = useState('');
@@ -23,8 +23,11 @@ const NewExpense = () => {
         event.preventDefault();
         const expenseData = {title: enteredTitle,
                              amount: enteredAmount,
-                             date: new Date(enteredDate)}
-        console.log(expenseData)
+                             date: new Date(enteredDate),
+                             id: Math.random().toString()
+                            }
+        //console.log(expenseData)
+        props.newExpenseHandler(expenseData);
         setTitle('')
         setAmount('')
         setDate('')
