@@ -12,13 +12,12 @@ function ExpenseList(props) {
   const onFilterYearChangeHandler = (filterYear) => {
     setFilterYear(filterYear) 
   }
-
-  const filteredExpenses = props.expenses.filter(expense => { return expense.date.getFullYear().toString()===enteredFilterYear})  
-
+  const filteredExpenses = props.expenses.filter(expense => { return expense.date.getFullYear().toString()===enteredFilterYear})
+  
     return(
         <Card className="expenses-list">
             <ExpensesFilter current_year={enteredFilterYear} filterYearChangeHandler={onFilterYearChangeHandler}></ExpensesFilter>
-            {filteredExpenses.length === 0 && <p>No expenses found for the select year</p> }
+            {filteredExpenses.length === 0 && <p className="expenses_no-expenses">No expenses found for the select year</p> }
             {filteredExpenses.length > 0 && filteredExpenses.map(expense => <ExpenseItem key={expense.id} title={expense.title} amount={expense.amount} date={expense.date}></ExpenseItem>)}
         </Card>
     )
