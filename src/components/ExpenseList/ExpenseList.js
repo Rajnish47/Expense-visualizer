@@ -3,6 +3,7 @@ import ExpenseItem from '../ExpenseItem/ExpenseItem';
 import "./ExpenseList.css"
 import Card from '../Card/Card';
 import ExpensesFilter from '../ExpenseFilter/ExpenseFilter';
+import ExpenseChart from '../ExpenseChart/ExpenseChart';
 
 function ExpenseList(props) {
 
@@ -17,6 +18,7 @@ function ExpenseList(props) {
     return(
         <Card className="expenses-list">
             <ExpensesFilter current_year={enteredFilterYear} filterYearChangeHandler={onFilterYearChangeHandler}></ExpensesFilter>
+            <ExpenseChart expenses={filteredExpenses}></ExpenseChart>
             {filteredExpenses.length === 0 && <p className="expenses_no-expenses">No expenses found for the select year</p> }
             {filteredExpenses.length > 0 && filteredExpenses.map(expense => <ExpenseItem key={expense.id} title={expense.title} amount={expense.amount} date={expense.date}></ExpenseItem>)}
         </Card>
