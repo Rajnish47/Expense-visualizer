@@ -1,6 +1,6 @@
-FROM ubuntu:20.04
+FROM node:18
 RUN mkdir -p /home/node_app
 WORKDIR /home/node_app
 COPY dist .
-CMD [ "/bin/bash" ]
-
+RUN npm install serve
+CMD [ "server", "-l", "7000" ]
